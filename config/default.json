@@ -1,0 +1,29 @@
+{
+    "logger": {
+        "name": "area-analysis",
+        "level": "info",
+        "toFile": false,
+        "dirLogFile": null
+    },
+    "service": {
+        "id": "area-analysis",
+        "name": "Area Analysis",
+        "port": 3003
+    },
+    "db": {
+        "host": "",
+        "port": "",
+        "user": "",
+        "password": "",
+        "database": ""
+    },
+    "cache": {
+        "host": "",
+        "port": "",
+        "username": "",
+        "password": ""
+    },
+    "layers": {
+        "configYamlFile": ""
+    }
+}

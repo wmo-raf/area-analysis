@@ -1,0 +1,41 @@
+airports:
+  label: Airports
+  id: airports
+  tableName: pgadapter.africa_airports
+  geomField: geom
+  columns:
+    - gid
+    - name
+    - type
+    - elevation_
+dams:
+  label: Dams
+  id: dams
+  tableName: pgadapter.africa_dams
+  geomField: geom
+  columns:
+    - gid
+    - dam_name
+    - river
+    - sub_basin
+    - year
+healthsites:
+  label: Health Sites
+  id: healthsites
+  tableName: pgadapter.africa_healthsites
+  geomField: geom
+  columns:
+    - gid
+    - name
+    - amenity
+power_plants:
+  label: Power Plants
+  id: power_plants
+  tableName: pgadapter.africa_power_plants
+  geomField: geom
+  columns:
+    - gid
+    - name
+    - capacity_m
+    - primary_fu
+    - other_fuel

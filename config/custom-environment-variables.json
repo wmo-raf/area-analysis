@@ -1,0 +1,25 @@
+{
+    "logger": {
+        "level": "LOGGER_LEVEL"
+
+    },
+    "service": {
+        "port": "PORT"
+    },
+    "db": {
+        "host": "DB_HOST",
+        "port": "DB_PORT",
+        "user": "DB_USER",
+        "password": "DB_PASSWORD",
+        "database": "DB_NAME"
+    },
+    "cache": {
+        "host": "MEMCACHE_HOST",
+        "port": "MEMCACHE_PORT",
+        "username": "MEMCACHE_USER",
+        "password": "MEMCACHE_PASSWORD"
+    },
+    "layers": {
+        "configYamlFile": "LAYERS_YAML_CONFIG_FILE"
+    }
+}

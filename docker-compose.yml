@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  memcache:
+    image: memcached:1.6.12-alpine
+    container_name: area_analysis_memcache
+    ports:
+     - 11211
+  area_analysis:
+    image: africahazardswatch.org/area_analysis
+    container_name: area_analysis
+    build: .
+    env_file:
+      - .env
+    environment:
+      - MEMCACHE_HOST=memcache
+      - LAYERS_YAML_CONFIG_FILE=/area-analysis/config/layers.yaml
+    volumes:
+      - ${LAYERS_YAML_CONFIG_FILE_VOL}:/area-analysis/config/layers.yaml
+    restart: ${RESTART_POLICY}
+    ports:
+      - "${PORT}:${PORT}"
