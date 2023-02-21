@@ -13,8 +13,6 @@ const router = new Router({
 
 class AreaAnalysisRouter {
   static async getIntersectingData(ctx) {
-    logger.info("Getting Dams");
-
     ctx.checkBody("geojson").notEmpty().isGEOJSON();
 
     ctx.checkQuery("layer").notEmpty();
@@ -29,6 +27,8 @@ class AreaAnalysisRouter {
     const { geojson } = ctx.request.body;
     const { layer } = ctx.request.query;
 
+    const feature = geojson.features[0];
+
     const layerConfig = layers[layer];
 
     if (!layerConfig) {
@@ -41,7 +41,7 @@ class AreaAnalysisRouter {
 
     const data = await AreaAnalysisService.getIntersectingRows(
       layerConfig,
-      geojson
+      feature.geometry
     );
 
     ctx.body = data;
