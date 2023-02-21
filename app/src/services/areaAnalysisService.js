@@ -13,13 +13,11 @@ const createQuery = (layerConfig, geojsonStr) => {
 };
 
 class AreaAnalysisService {
-  static async getIntersectingRows(layerConfig, geojson) {
+  static async getIntersectingRows(layerConfig, geojsonFeatureGeom, geojsonId) {
     logger.debug(`Getting intersecting data for layer: ${layerConfig.label}`);
 
-    const geojsonStr = JSON.stringify(geojson);
-    const query = createQuery(layerConfig, geojsonStr);
-
-    const { geojsonId } = geojson;
+    const featureGeom = JSON.stringify(geojsonFeatureGeom);
+    const query = createQuery(layerConfig, featureGeom);
 
     let cacheKey = geojsonId ? `${geojsonId}-${layerConfig.id}` : null;
 

@@ -25,6 +25,7 @@ class AreaAnalysisRouter {
     }
 
     const { geojson } = ctx.request.body;
+    const { geojsonId } = ctx.request.body;
     const { layer } = ctx.request.query;
 
     const feature = geojson.features[0];
@@ -41,7 +42,8 @@ class AreaAnalysisRouter {
 
     const data = await AreaAnalysisService.getIntersectingRows(
       layerConfig,
-      feature.geometry
+      feature.geometry,
+      geojsonId
     );
 
     ctx.body = data;
