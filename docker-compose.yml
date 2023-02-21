@@ -10,13 +10,24 @@ services:
     image: africahazardswatch.org/area_analysis
     container_name: area_analysis
     build: .
-    env_file:
-      - .env
+    command: bash -c "/wait && yarn start"
     environment:
       - MEMCACHE_HOST=memcache
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
       - LAYERS_YAML_CONFIG_FILE=/area-analysis/config/layers.yaml
+      - PORT=${PORT}
+      - LOGGER_LEVEL=${LOGGER_LEVEL}
     volumes:
       - ${LAYERS_YAML_CONFIG_FILE_VOL}:/area-analysis/config/layers.yaml
     restart: ${RESTART_POLICY}
     ports:
       - "${PORT}:${PORT}"
+
+networks:
+    default:
+      name:  ${AHW_DOCKER_NETWORK}
+      external: true

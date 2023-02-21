@@ -6,8 +6,7 @@ ENV USER microservice
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y bash build-essential 
 
-RUN addgroup $USER && useradd -ms /bin/bash $USER -g $USER
-RUN yarn global add bunyan
+RUN addgroup $USER && adduser -ms /bin/bash $USER -g $USER
 
 RUN mkdir -p /opt/$NAME
 COPY package.json /opt/$NAME/package.json
@@ -20,9 +19,6 @@ COPY config /opt/$NAME/config
 WORKDIR /opt/$NAME
 
 COPY --chown=$USER:$USER ./app /opt/$NAME/app
-
-# Tell Docker we are going to use this ports
-EXPOSE 3100
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
 RUN chmod +x /wait

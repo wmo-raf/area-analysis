@@ -8,7 +8,7 @@
     "service": {
         "id": "area-analysis",
         "name": "Area Analysis",
-        "port": 3003
+        "port": 3000
     },
     "db": {
         "host": "",
