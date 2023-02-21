@@ -6,7 +6,7 @@ ENV USER microservice
 RUN apt-get update -y && apt-get upgrade -y && \
     apt-get install -y bash build-essential 
 
-RUN addgroup $USER && adduser -ms /bin/bash $USER -g $USER
+RUN addgroup $USER && useradd --create-home --shell /bin/bash $USER -g $USER
 
 RUN mkdir -p /opt/$NAME
 COPY package.json /opt/$NAME/package.json
