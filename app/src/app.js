@@ -8,6 +8,7 @@ const ErrorSerializer = require("serializers/errorSerializer");
 const logger = require("logger");
 const config = require("config");
 const koaValidate = require("koa-validate");
+const cors = require("@koa/cors");
 
 async function init() {
   return new Promise((resolve, reject) => {
@@ -15,6 +16,8 @@ async function init() {
     const app = new Koa();
 
     app.use(koaLogger());
+
+    app.use(cors());
 
     app.use(koaSimpleHealthCheck());
 
